@@ -77,7 +77,7 @@ BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
 
 BOARD_KERNEL_IMAGE_NAME := Image
 TARGET_KERNEL_CONFIG := amber_user_defconfig
-TARGET_KERNEL_SOURCE := $(DEVICE_PATH)/prebuilts/kernel-headers
+TARGET_KERNEL_SOURCE := kernel/xiaomi/pissarro
 
 # NFC
 DEVICE_MANIFEST_SKUS += nfc
