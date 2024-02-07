@@ -3,7 +3,7 @@ echo 'Starting to clone stuffs needed for amber'
 echo 'Cloning amber Vendor tree [1/5]'
 # Device Vendor Tree
 rm -rf vendor/xiaomi/amber
-git clone --depth=1 https://github.com/mt6893-amber/android_vendor_xiaomi_amber.git -b fourteen vendor/xiaomi/amber
+git clone --depth=1 https://github.com/mt6893-amber/android_vendor_xiaomi_amber.git -b fourteen-miui vendor/xiaomi/amber
 
 echo 'Cloning Kernel tree [2/5]'
 # Kernel Tree

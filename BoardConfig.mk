@@ -59,7 +59,8 @@ BOARD_KERNEL_TAGS_OFFSET := 0x07c08000
 
 BOARD_KERNEL_CMDLINE := \
     androidboot.init_fatal_reboot_target=recovery \
-    bootopt=64S3,32N2,64N2
+    bootopt=64S3,32N2,64N2 \
+    androidboot.tee_type=2
 
 TARGET_FORCE_PREBUILT_KERNEL := true
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilts/kernel
@@ -134,7 +135,7 @@ TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 ENABLE_VENDOR_RIL_SERVICE := true
 
 # Security patch level
-VENDOR_SECURITY_PATCH := 2023-08-05
+VENDOR_SECURITY_PATCH := 2023-10-01
 
 # SEPolicy
 include device/mediatek/sepolicy_vndr/SEPolicy.mk
