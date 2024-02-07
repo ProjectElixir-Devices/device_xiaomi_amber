@@ -7,8 +7,8 @@ git clone --depth=1 https://github.com/mt6893-amber/android_vendor_xiaomi_amber.
 
 echo 'Cloning Kernel tree [2/5]'
 # Kernel Tree
-rm -rf kernel/xiaomi/pissarro
-git clone --depth=1 https://github.com/pissarro-dev/kernel_xiaomi_pissarro kernel/xiaomi/pissarro
+rm -rf device/xiaomi/amber-kernel
+git clone --depth=1 https://github.com/mt6893-amber/android_kernel_xiaomi_amber-prebuilt.git -b V14.0.6.0.TKWMIXM device/xiaomi/amber-kernel
 
 echo 'Cloning Hardware xiaomi [3/5]'
 # Hardware xiaomi
