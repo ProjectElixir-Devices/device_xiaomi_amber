@@ -141,9 +141,6 @@ ro.vendor.smvr.p2batch.vga=32
 # DRM
 ro.netflix.bsp_rev=MTK6893-32817-1
 
-# Dalvik
-dalvik.vm.dex2oat64.enabled=true
-
 # FUSE passthrough
 persist.sys.fuse.passthrough.enable=true
 
