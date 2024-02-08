@@ -36,6 +36,3 @@ TARGET_SUPPORTS_CALL_RECORDING := true
 
 # Build aperture camera
 TARGET_BUILD_APERTURE := true
-
-# Force Lawnchair launcher
-FORCE_LAWNCHAIR := true
