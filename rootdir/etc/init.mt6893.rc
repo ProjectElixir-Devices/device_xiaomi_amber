@@ -75,6 +75,9 @@ on fs
     write /sys/kernel/mm/swap/vma_ra_enabled false
     swapon_all /vendor/etc/fstab.mt6893
 
+    # start EAS+
+    write /sys/devices/system/cpu/eas/enable 1
+
     # mount rescue
     mount ext4 /dev/block/bootdevice/by-name/rescue /mnt/rescue noatime
     restorecon_recursive /mnt/rescue
