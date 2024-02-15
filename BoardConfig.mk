@@ -58,6 +58,8 @@ BOARD_DTB_OFFSET := 0x07c08000
 BOARD_RAMDISK_OFFSET := 0x11088000
 BOARD_KERNEL_TAGS_OFFSET := 0x07c08000
 
+BOARD_RAMDISK_USE_LZ4 := true
+
 BOARD_KERNEL_CMDLINE := \
     androidboot.init_fatal_reboot_target=recovery \
     bootopt=64S3,32N2,64N2 \
