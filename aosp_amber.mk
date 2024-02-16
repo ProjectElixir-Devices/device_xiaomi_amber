@@ -36,3 +36,6 @@ TARGET_SUPPORTS_CALL_RECORDING := true
 
 # Build aperture camera
 TARGET_BUILD_APERTURE_CAMERA := true
+
+# Exclude lawnchair
+EXCLUDE_LAWNCHAIR := true
