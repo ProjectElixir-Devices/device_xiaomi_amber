@@ -79,11 +79,17 @@ on init
     write /dev/cpuset/system-background/cpus 0-3
     write /dev/cpuset/top-app/cpus 0-7
 
+on property:sys.boot_completed=1
+    # Set-up EAS (Energy Aware Scheduler) environment
+    write /sys/devices/system/cpu/eas/enable 1
+
     # Set default SchedTune values
     write /dev/stune/foreground/schedtune.prefer_idle 0
     write /dev/stune/top-app/schedtune.prefer_idle 0
-    write /dev/stune/rt/schedtune.prefer_idle 0
-    write /dev/stune/top-app/schedtune.boost 1
+    write /dev/stune/rt/schedtune.prefer_idle 1
+    write /dev/stune/top-app/schedtune.boost 50
+    write /dev/stune/schedtune.boost 50
+    write /proc/perfmgr/boost_ctrl/eas_ctrl/sched_big_task_rotation 1
 
 on enable-low-power
     # Enable UFS powersaving
