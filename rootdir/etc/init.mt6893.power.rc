@@ -1,15 +1,3 @@
-on property:init.svc.vendor.charger=running
-    # Enable UFS powersaving
-    write /sys/devices/platform/11270000.ufshci/clkgate_enable 1
-
-    # Keep one LITTLE and one big
-    write /sys/devices/system/cpu/cpu1/online 0
-    write /sys/devices/system/cpu/cpu2/online 0
-    write /sys/devices/system/cpu/cpu3/online 0
-    write /sys/devices/system/cpu/cpu4/online 0
-    write /sys/devices/system/cpu/cpu5/online 0
-    write /sys/devices/system/cpu/cpu7/online 0
-
 on init
     # Create energy-aware scheduler tuning nodes
     mkdir /dev/stune/foreground
@@ -53,24 +41,15 @@ on init
     chown system system /dev/stune/io/tasks
     chmod 0666 /dev/stune/io/tasks
 
-    # Disable UFS powersaving
-    write /sys/devices/platform/11270000.ufshci/clkgate_enable 0
-
-    # Boot time FS tuning
-    write /sys/block/mmcblk0/queue/iostats 0
-    write /sys/block/mmcblk0/queue/nr_requests 256
-    write /sys/block/sdc/queue/iostats 0
-    write /sys/block/sdc/queue/nr_requests 256
-
     # Configure governor settings for little cluster
     write /sys/devices/system/cpu/cpufreq/policy0/scaling_governor "schedutil"
     write /sys/devices/system/cpu/cpufreq/policy0/schedutil/up_rate_limit_us 500
     write /sys/devices/system/cpu/cpufreq/policy0/schedutil/down_rate_limit_us 20000
 
     # Configure governor settings for big cluster
-    write /sys/devices/system/cpu/cpufreq/policy6/scaling_governor "schedutil"
-    write /sys/devices/system/cpu/cpufreq/policy6/schedutil/up_rate_limit_us 500
-    write /sys/devices/system/cpu/cpufreq/policy6/schedutil/down_rate_limit_us 20000
+    write /sys/devices/system/cpu/cpufreq/policy7/scaling_governor "schedutil"
+    write /sys/devices/system/cpu/cpufreq/policy7/schedutil/up_rate_limit_us 500
+    write /sys/devices/system/cpu/cpufreq/policy7/schedutil/down_rate_limit_us 20000
 
     # update cpus for cpuset cgroup
     write /dev/cpuset/foreground/cpus 0-2,4-7
@@ -86,30 +65,11 @@ on property:sys.boot_completed=1
     # Set default SchedTune values
     write /dev/stune/foreground/schedtune.prefer_idle 0
     write /dev/stune/top-app/schedtune.prefer_idle 0
-    write /dev/stune/rt/schedtune.prefer_idle 1
-    write /dev/stune/top-app/schedtune.boost 50
-    write /dev/stune/schedtune.boost 50
+    write /dev/stune/rt/schedtune.prefer_idle 0
+    write /dev/stune/top-app/schedtune.boost 100
     write /proc/perfmgr/boost_ctrl/eas_ctrl/sched_big_task_rotation 1
 
 on enable-low-power
-    # Enable UFS powersaving
-    write /sys/devices/platform/11270000.ufshci/clkgate_enable 1
-
-    # Runtime FS tuning
-    # we should adjust the setting upon boot_complete for runtime performance
-    write /sys/block/mmcblk0/queue/iostats 1
-    write /sys/block/mmcblk0/queue/read_ahead_kb 512
-    write /sys/block/mmcblk0/queue/nr_requests 128
-    write /sys/block/sdc/queue/iostats 1
-    write /sys/block/sdc/queue/read_ahead_kb 512
-    write /sys/block/sdc/queue/nr_requests 128
-    write /sys/block/dm-0/queue/read_ahead_kb 128
-    write /sys/block/dm-1/queue/read_ahead_kb 128
-    write /sys/block/dm-2/queue/read_ahead_kb 128
-    write /sys/block/dm-3/queue/read_ahead_kb 128
-    write /sys/block/dm-4/queue/read_ahead_kb 128
-    write /sys/block/dm-5/queue/read_ahead_kb 128
-
     write /proc/cpufreq/cpufreq_sched_disable 0
     write /proc/sys/kernel/sched_migration_cost_ns 200000
 
