@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.xiaomi.dolby;
+package org.lineageos.settings.dolby;
 
 import android.os.Bundle;
 

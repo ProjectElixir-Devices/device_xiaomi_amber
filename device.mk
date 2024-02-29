@@ -76,7 +76,6 @@ PRODUCT_PACKAGES += \
     libnbaio_mono
 
 PRODUCT_PACKAGES += \
-    XiaomiDolby \
     MtkInCallService
 
 PRODUCT_COPY_FILES += \

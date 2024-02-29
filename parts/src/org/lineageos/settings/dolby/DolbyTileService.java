@@ -1,4 +1,4 @@
-package com.xiaomi.dolby;
+package org.lineageos.settings.dolby;
 
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;

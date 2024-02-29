@@ -15,7 +15,7 @@
  * limitations under the License
  */
 
-package com.xiaomi.dolby;
+package org.lineageos.settings;
 
 import static com.android.settingslib.drawer.TileUtils.META_DATA_PREFERENCE_SUMMARY;
 
@@ -25,11 +25,11 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 
-import com.android.settingslib.widget.R;
-import com.xiaomi.dolby.DolbyUtils;
+import org.lineageos.settings.R;
+import org.lineageos.settings.dolby.DolbyUtils;
 
 /** Provide preference summary for injected items. */
-public class DolbySummaryProvider extends ContentProvider {
+public class SummaryProvider extends ContentProvider {
 
     private static final String KEY_DOLBY = "dolby";
 
