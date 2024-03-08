@@ -26,10 +26,6 @@ PRODUCT_PACKAGES += \
     android.hardware.boot-service.default \
     android.hardware.boot-service.default_recovery
 
-PRODUCT_PACKAGES += \
-    mtk_plpath_utils \
-    mtk_plpath_utils_recovery
-
 # A/B
 PRODUCT_PACKAGES += \
     update_engine \
