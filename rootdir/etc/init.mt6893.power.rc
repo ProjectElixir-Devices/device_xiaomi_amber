@@ -1,3 +1,15 @@
+on property:init.svc.vendor.charger=running
+    # Enable UFS powersaving
+    write /sys/devices/platform/bootdevice/clkgate_enable 1
+
+    # Keep one LITTLE and one big
+    write /sys/devices/system/cpu/cpu1/online 0
+    write /sys/devices/system/cpu/cpu2/online 0
+    write /sys/devices/system/cpu/cpu3/online 0
+    write /sys/devices/system/cpu/cpu4/online 0
+    write /sys/devices/system/cpu/cpu5/online 0
+    write /sys/devices/system/cpu/cpu7/online 0
+
 on init
     # Create energy-aware scheduler tuning nodes
     mkdir /dev/stune/foreground
@@ -41,6 +53,9 @@ on init
     chown system system /dev/stune/io/tasks
     chmod 0666 /dev/stune/io/tasks
 
+    # Disable UFS powersaving
+    write /sys/devices/platform/bootdevice/clkgate_enable 0
+
     # Configure governor settings for little cluster
     write /sys/devices/system/cpu/cpufreq/policy0/scaling_governor "schedutil"
     write /sys/devices/system/cpu/cpufreq/policy0/schedutil/up_rate_limit_us 500
@@ -52,10 +67,10 @@ on init
     write /sys/devices/system/cpu/cpufreq/policy7/schedutil/down_rate_limit_us 20000
 
     # update cpus for cpuset cgroup
-    write /dev/cpuset/foreground/cpus 0-2,4-7
+    write /dev/cpuset/foreground/cpus 0-7
     write /dev/cpuset/foreground/boost/cpus 0-7
-    write /dev/cpuset/background/cpus 0-2
-    write /dev/cpuset/system-background/cpus 0-3
+    write /dev/cpuset/background/cpus 0-3
+    write /dev/cpuset/system-background/cpus 0-5
     write /dev/cpuset/top-app/cpus 0-7
 
 on property:sys.boot_completed=1
@@ -67,9 +82,22 @@ on property:sys.boot_completed=1
     write /dev/stune/top-app/schedtune.prefer_idle 0
     write /dev/stune/rt/schedtune.prefer_idle 0
     write /dev/stune/top-app/schedtune.boost 100
-    write /proc/perfmgr/boost_ctrl/eas_ctrl/sched_big_task_rotation 1
 
 on enable-low-power
+    # Back to default VM settings
+    write /proc/sys/vm/dirty_expire_centisecs 3000
+    write /proc/sys/vm/dirty_background_ratio 10
+
+    # Setup runtime cpusets
+    write /dev/cpuset/top-app/cpus 0-7
+    write /dev/cpuset/foreground/cpus 0-5,7
+    write /dev/cpuset/background/cpus 4-5
+    write /dev/cpuset/system-background/cpus 2-5
+    write /dev/cpuset/restricted/cpus 2-5
+
+    # Enable UFS powersaving
+    write /sys/devices/platform/bootdevice/clkgate_enable 1
+
     write /proc/cpufreq/cpufreq_sched_disable 0
     write /proc/sys/kernel/sched_migration_cost_ns 200000
 
