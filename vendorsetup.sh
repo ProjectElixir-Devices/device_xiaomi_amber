@@ -23,6 +23,6 @@ git clone --depth=1 https://github.com/xiaomi-mediatek-devs/android_hardware_med
 echo 'Cloning mediatek sepolicy_vndr [5/5]'
 # Mediatek sepolicy_vndr
 rm -rf device/mediatek
-git clone --depth=1 https://github.com/mt6893-amber/android_device_mediatek_sepolicy_vndr.git -b lineage-21 device/mediatek/sepolicy_vndr
+git clone --depth=1 https://github.com/xiaomi-mediatek-devs/android_device_mediatek_sepolicy_vndr.git -b lineage-21 device/mediatek/sepolicy_vndr
 
 echo 'Completed, Now proceeding to lunch'
