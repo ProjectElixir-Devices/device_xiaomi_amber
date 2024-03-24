@@ -118,6 +118,10 @@ PRODUCT_PACKAGES += \
     libdrm.vendor \
     libutils-v32
 
+PRODUCT_PACKAGES += \
+    vendor.xiaomi.hardware.displayfeature@1.0.vendor \
+    vendor.xiaomi.hw.touchfeature@1.0.vendor
+
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm-service.clearkey
