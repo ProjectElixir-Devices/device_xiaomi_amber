@@ -24,9 +24,9 @@ PRODUCT_CHARACTERISTICS := nosdcard
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRIVATE_BUILD_DESC="amber-user 12 SP1A.210812.016 V14.0.6.0.TKWMIXM release-keys"
+    PRIVATE_BUILD_DESC="amber-user 12 SP1A.210812.016 V816.0.3.0.UKWMIXM release-keys"
 
-BUILD_FINGERPRINT := Xiaomi/amber_global/amber:12/SP1A.210812.016/V14.0.6.0.TKWMIXM:user/release-keys
+BUILD_FINGERPRINT := Xiaomi/amber_global/amber:12/SP1A.210812.016/V816.0.3.0.UKWMIXM:user/release-keys
 
 # Add Elixir Flags
 ELIXIR_BUILD_TYPE := OFFICIAL

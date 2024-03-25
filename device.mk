@@ -203,13 +203,12 @@ PRODUCT_COPY_FILES += \
 
 # Keymaster
 PRODUCT_PACKAGES += \
-    android.hardware.keymaster@4.0.vendor \
-    libkeymaster4.vendor \
-    libkeymaster4support.vendor \
-    libkeymaster_portable.vendor \
-    libkeymaster_messages.vendor \
+    libkeymaster4_1support.vendor \
+    libkeymaster41.vendor \
+    libpuresoftkeymasterdevice.vendor \
     libsoft_attestation_cert.vendor \
-    libpuresoftkeymasterdevice.vendor
+    android.hardware.keymaster@4.1.vendor \
+    android.hardware.hardware_keystore.km41.xml
 
 # Light
 PRODUCT_PACKAGES += \
